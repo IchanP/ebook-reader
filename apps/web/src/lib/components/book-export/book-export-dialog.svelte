@@ -15,7 +15,8 @@
     gDriveStorageSource$,
     lastExportedTarget$,
     lastExportedTypes$,
-    oneDriveStorageSource$
+    oneDriveStorageSource$,
+    protonDriveStorageSource$
   } from '$lib/data/store';
   import { executeReplicate$ } from '$lib/functions/replication/replication-progress';
   import { createEventDispatcher } from 'svelte';
@@ -41,6 +42,15 @@
               ...getStorageIconData(StorageKey.ONEDRIVE),
               source: StorageKey.ONEDRIVE,
               label: 'OneDrive'
+            }
+          ]
+        : []),
+      ...(isStorageSourceAvailable(StorageKey.PROTONDRIVE, $protonDriveStorageSource$, window)
+        ? [
+            {
+              ...getStorageIconData(StorageKey.PROTONDRIVE),
+              source: StorageKey.PROTONDRIVE,
+              label: 'Proton'
             }
           ]
         : []),

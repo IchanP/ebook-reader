@@ -14,13 +14,14 @@ import { GDriveStorageHandler } from '$lib/data/storage/handler/gdrive-handler';
 import { MergeMode } from '$lib/data/merge-mode';
 import { OneDriveStorageHandler } from '$lib/data/storage/handler/onedrive-handler';
 import { ReplicationSaveBehavior } from '$lib/functions/replication/replication-options';
+import { ProtonDriveStorageHandler } from './handler/protondrive-handler';
 
 let backupStorageHandler: BackupStorageHandler;
 let browserStorageHandler: BrowserStorageHandler;
 let gDriveStorageHandler: GDriveStorageHandler;
 let oneDriveStorageHandler: OneDriveStorageHandler;
+let protonDriveStorageHandler: ProtonDriveStorageHandler;
 let fsStorageHandler: FilesystemStorageHandler;
-// TODO declare proton drive handler here...
 
 export function getStorageHandler(
   window: Window,
@@ -153,6 +154,13 @@ export function getStorageHandler(
       );
 
       return oneDriveStorageHandler;
+
+    case StorageKey.PROTONDRIVE:
+      protonDriveStorageHandler =
+        protonDriveStorageHandler || new ProtonDriveStorageHandler(window);
+      // TODO run updatesettings...
+      return protonDriveStorageHandler;
+
     case StorageKey.FS:
       fsStorageHandler = fsStorageHandler || new FilesystemStorageHandler(window, StorageKey.FS);
       fsStorageHandler.updateSettings(

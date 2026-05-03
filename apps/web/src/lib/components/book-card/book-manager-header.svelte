@@ -135,7 +135,7 @@
             {
               label: 'Proton',
               key: StorageKey.PROTONDRIVE,
-              requiresConnectivity: false
+              requiresConnectivity: true
             }
           ]
         : []),
