@@ -27,6 +27,7 @@ export interface StorageIconElement extends StorageIcon {
   source: StorageKey;
 }
 
+// TODO we need to add stuff to the .env for proton drive and then extend this function...
 export function isStorageSourceAvailable(
   storageSource: StorageKey,
   storageSourceManager: string,
@@ -55,6 +56,11 @@ export function isStorageSourceAvailable(
         oneDriveScope;
       break;
 
+    // TODO add a StorageKey.PROTONDRIVE here
+    case StorageKey.PROTONDRIVE:
+      hasValidEnvironment = true;
+      break;
+
     case StorageKey.FS:
       hasValidEnvironment = !!storageSourceManager && 'showDirectoryPicker' in window;
       break;
@@ -66,6 +72,7 @@ export function isStorageSourceAvailable(
   return hasValidEnvironment;
 }
 
+// TODO add a proton icon?
 export function getStorageIconData(storageSource: StorageKey): StorageIcon {
   switch (storageSource) {
     case StorageKey.BACKUP:
@@ -82,6 +89,11 @@ export function getStorageIconData(storageSource: StorageKey): StorageIcon {
       return {
         viewBox: '0 0 640 512',
         d: 'M96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1z'
+      };
+    case StorageKey.PROTONDRIVE:
+      return {
+        viewBox: '0 46 512 420.2',
+        d: 'M361.7 151.2l-200.5 1.1c-8.6.1-17.1-2.6-24.1-7.5l-44.7-31.5c-7-4.9-15.3-7.5-23.9-7.5H0v307.9c0 29 23.7 52.5 52.9 52.5h350.2V192c0-22.6-18.5-41-41.4-40.8M241.3 88.2h217.8c29.2 0 52.9 23.5 52.9 52.5v272.9c0 29-23.7 52.5-52.9 52.5h-55.9V192c0-22.6-18.6-41-41.4-40.8l-200.5 1.1c-8.6.1-17.1-2.6-24.1-7.5l-44.7-31.5c-7-4.9-15.3-7.5-23.9-7.5H0v-7.3C0 69.5 23.7 46 52.9 46h99.4c10 0 19.8 3.2 27.8 9l33.2 24.2c8.2 5.8 18 9 28 9'
       };
     case StorageKey.FS:
       return {

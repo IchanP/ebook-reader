@@ -9,7 +9,8 @@ export enum StorageKey {
   BROWSER = 'browser',
   FS = 'fs',
   GDRIVE = 'gdrive',
-  ONEDRIVE = 'onedrive'
+  ONEDRIVE = 'onedrive',
+  PROTONDRIVE = 'protondrive'
 }
 
 export enum StorageDataType {
@@ -21,9 +22,11 @@ export enum StorageDataType {
   SUBTITLE = 'subtitle'
 }
 
+// TODO figure out what this is used for
 export enum StorageSourceDefault {
   GDRIVE_DEFAULT = 'ttu-gdrive-default',
-  ONEDRIVE_DEFAULT = 'ttu-onedrive-default'
+  ONEDRIVE_DEFAULT = 'ttu-onedrive-default',
+  PROTONDRIVE_DEFAULT = 'ttu-protondrive-default'
 }
 
 export enum InternalStorageSources {
@@ -40,5 +43,6 @@ export const internalStorageSourceName = new Set<string>([
 
 export const defaultStorageSources = [
   { name: StorageSourceDefault.GDRIVE_DEFAULT, type: StorageKey.GDRIVE },
-  { name: StorageSourceDefault.ONEDRIVE_DEFAULT, type: StorageKey.ONEDRIVE }
+  { name: StorageSourceDefault.ONEDRIVE_DEFAULT, type: StorageKey.ONEDRIVE },
+  { name: StorageSourceDefault.PROTONDRIVE_DEFAULT, type: StorageKey.PROTONDRIVE }
 ];

@@ -20,6 +20,7 @@ let browserStorageHandler: BrowserStorageHandler;
 let gDriveStorageHandler: GDriveStorageHandler;
 let oneDriveStorageHandler: OneDriveStorageHandler;
 let fsStorageHandler: FilesystemStorageHandler;
+// TODO declare proton drive handler here...
 
 export function getStorageHandler(
   window: Window,
@@ -98,6 +99,7 @@ export function getStorageHandler(
   readingGoalsMergeMode = MergeMode.MERGE,
   askForStorageUnlock = true
 ) {
+  // TODO add in proton drive here so that it returns the proton drive handler
   switch (storageType) {
     case StorageKey.BACKUP:
       backupStorageHandler =
